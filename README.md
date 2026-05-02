@@ -1,46 +1,89 @@
-🛡️ AEGIS - Advanced File Integrity Monitor
-AEGIS, belirli bir dizindeki dosya değişikliklerini gerçek zamanlı olarak takip eden, yüksek performanslı ve asenkron çalışan bir güvenlik aracıdır. Dosyaların dijital parmak izlerini (SHA-256) kullanarak, yetkisiz modifikasyonları, silme işlemlerini veya yeni dosya oluşturma faaliyetlerini anında tespit eder.
+# 🛡️ AEGIS: Advanced File Integrity Monitor
 
-🚀 Temel Özellikler
-Gerçek Zamanlı İzleme: FileSystemWatcher entegrasyonu ile dosya sistemindeki her hareketi (Oluşturma, Değiştirme, Silme, Ad Değiştirme) milisaniyeler içinde yakalar.
+AEGIS, sistem dosyalarınızın bütünlüğünü korumak ve yetkisiz değişiklikleri anında tespit etmek için tasarlanmış, yüksek performanslı bir **File Integrity Monitoring (FIM)** aracıdır.  
 
-SHA-256 Hashing: Dosya bütünlüğünü doğrulamak için kriptografik olarak güvenli SHA-256 algoritmasını kullanır. Sadece dosya boyutu veya tarihine değil, dosyanın içeriğine odaklanır.
+Kriptografik doğrulama yöntemlerini modern asenkron mimariyle birleştirerek sistem kaynaklarını minimum düzeyde kullanır.
 
-Asenkron Baseline Oluşturma: Uygulama başladığında Task.Run ve WhenAll kullanarak binlerce dosyayı paralel bir şekilde tarar ve hızlıca bir "başlangıç referansı" (baseline) oluşturur.
+---
 
-Thread-Safe Mimari: ConcurrentDictionary ve Interlocked gibi yapılar sayesinde çok iş parçacıklı (multithreading) ortamlarda veri bütünlüğünü korur.
+## 🚀 Öne Çıkan Özellikler
 
-Dinamik Konsol UI: Kullanıcı dostu, renk kodlu ve canlı güncellenen bir dashboard üzerinden anlık istatistikleri ve logları takip etmenizi sağlar.
+| Özellik | Açıklama |
+|--------|---------|
+| ⚡ Real-Time Monitoring | `FileSystemWatcher` ile dosya sistemi olaylarını anında yakalar |
+| 🔐 Deep Integrity Check | SHA-256 ile dosya içeriğini doğrular |
+| 🧵 Multi-Threaded Baseline | Binlerce dosyayı paralel olarak hızlıca tarar |
+| 📊 Live Dashboard | Konsolda anlık istatistikler ve renkli uyarılar |
+| 🪶 Zero-Impact | `FileShare.ReadWrite` ile diğer işlemleri engellemez |
 
-🛠️ Teknik Detaylar
-AEGIS, verimliliği artırmak ve sistem kaynaklarını optimize etmek için şu teknolojileri kullanır:
+---
 
-Parallel Processing: Başlangıç taramasında işlemci çekirdeklerini verimli kullanarak tarama süresini minimize eder.
+## 🛠️ Nasıl Çalışır?
 
-Event-Driven: Sürekli döngü (polling) yerine olay tabanlı (event-driven) bildirimler kullanarak CPU kullanımını düşük tutar.
+AEGIS üç aşamada çalışır:
 
-Resource Sharing: Dosyalar başka uygulamalar tarafından kullanımdayken bile okuma yapabilmek için FileShare.ReadWrite modunu destekler.
+### 1️⃣ Baseline (Referans)
+Hedef dizindeki tüm dosyaların hash değerleri alınır ve bellekte saklanır.
 
-📊 İzleme Parametreleri
-Uygulama aşağıdaki dosya özniteliklerindeki değişimleri takip eder:
+### 2️⃣ Detection (Tespit)
+Dosya sistemi olayları dinlenir:
+- Dosya oluşturma
+- Silme
+- Değiştirme
+- Yeniden adlandırma
 
-Dosya Adı
+### 3️⃣ Verification (Doğrulama)
+Değişen dosyanın hash’i tekrar hesaplanır ve referansla karşılaştırılır.
 
-Son Yazılma Tarihi (Last Write)
+---
 
-Dosya Boyutu
+## 🖥️ Kullanılan Teknolojiler
 
-Güvenlik İzinleri
+- **Dil:** C# (.NET)
+- **Kütüphaneler:**
+  - `System.Security.Cryptography`
+  - `System.Collections.Concurrent`
+  - `System.Threading.Tasks`
 
-Oluşturulma Zamanı
+---
 
-Nasıl Çalışır?
-Giriş: Kullanıcıdan izlenecek hedef dizin alınır.
+## 📸 Çalışma Mantığı (Log Sistemi)
 
-Baseline: Tüm dosyaların SHA-256 hash değerleri hesaplanarak güvenli bir belleğe kaydedilir.
+Uygulama gerçek zamanlı olarak şu olayları loglar:
 
-Monitor: Arka planda dosya sistemi dinlenmeye başlanır.
+- 🟢 **CREATED** → Yeni dosya oluşturuldu  
+- 🟡 **MODIFIED** → Dosya içeriği değişti (Hash mismatch)  
+- 🔴 **DELETED** → Dosya silindi  
+- 🔵 **RENAMED** → Dosya adı değiştirildi  
 
-Alert: Herhangi bir değişiklik algılandığında yeni hash değeri eskisiyle karşılaştırılır; eğer fark varsa konsol üzerinde anlık uyarı (Alert) oluşturulur.
+---
 
-Not: Bu proje siber güvenlik farkındalığı ve sistem savunma mekanizmalarını anlamak amacıyla geliştirilmiştir.
+## ⚠️ Kullanım Notu
+
+Bu araç:
+- Siber güvenlik analizleri  
+- Malware inceleme  
+- Sistem izleme  
+
+gibi amaçlarla geliştirilmiştir.
+
+---
+
+## ▶️ Kullanım (Kurulum Gerektirmez)
+
+Projeyi kurmakla uğraşmak istemeyenler için:
+
+1. `Release` klasörüne gidin  
+2. `.exe` dosyasını çalıştırın  
+3. İzlemek istediğiniz dizini belirtin  
+
+Hepsi bu. Hayat bazen bu kadar basit olabiliyor.
+
+---
+
+## 📦 Manuel Kurulum (Opsiyonel)
+
+```bash
+git clone https://github.com/kullaniciadiniz/AegisFIM.git
+cd AegisFIM
+dotnet run
