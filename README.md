@@ -79,10 +79,3 @@ Projeyi kurmakla uğraşmak istemeyenler için:
 Hepsi bu. Hayat bazen bu kadar basit olabiliyor.
 
 ---
-
-## 📦 Manuel Kurulum (Opsiyonel)
-
-```bash
-git clone https://github.com/kullaniciadiniz/AegisFIM.git
-cd AegisFIM
-dotnet run
