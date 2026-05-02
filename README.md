@@ -72,9 +72,8 @@ gibi amaçlarla geliştirilmiştir.
 ## ▶️ Kullanım (Kurulum Gerektirmez)
 
 Projeyi kurmakla uğraşmak istemeyenler için:
-
-1. `Release` klasörüne gidin  
-2. `.exe` dosyasını çalıştırın  
+ 
+1. `.exe` dosyasını çalıştırın  
 3. İzlemek istediğiniz dizini belirtin  
 
 Hepsi bu. Hayat bazen bu kadar basit olabiliyor.
