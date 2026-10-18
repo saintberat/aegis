@@ -1,8 +1,14 @@
 # 🛡️ AEGIS — File Integrity Monitor (FIM)
 
+[![Release](https://img.shields.io/github/v/release/saintberat/aegis?color=blue&label=Latest%20Release)](https://github.com/saintberat/aegis/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A high-performance, real-time **File Integrity Monitoring (FIM)** engine built in **C# (.NET)**.
 
 AEGIS captures a cryptographic snapshot of a target directory and continuously monitors all file operations, immediately alerting on unauthorized additions, modifications, renames, and deletions.
+
+### 🚀 Download & Run
+Download the latest standalone executable directly from [**Releases (`AegisFIM.exe`)**](https://github.com/saintberat/aegis/releases/latest/download/AegisFIM.exe). No installation or runtime setup required.
 
 ---
 

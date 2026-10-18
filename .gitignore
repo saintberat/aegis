@@ -1,0 +1,21 @@
+# Build outputs and executables
+*.exe
+*.dll
+*.pdb
+bin/
+obj/
+
+# Visual Studio / Rider / VS Code cache
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# OS temporary files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
