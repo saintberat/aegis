@@ -86,4 +86,4 @@ AEGIS operates on a two-phase model:
 
 MIT License. Free to use, adapt, and build upon.
 
-<!-- sync-activity: 2026-11-01T17:00:14Z (e6b8401d) -->
+<!-- sync-activity: 2026-11-01T17:00:35Z (c73f7727) -->
